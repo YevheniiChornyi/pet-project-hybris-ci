@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -25,12 +26,22 @@ public class ProductService {
 
         System.out.println("Input product price: ");
         int price = scanner.nextInt();
+        System.out.println("Input product status(by number): 1.OUT_OF_STOCK; 2.IN_STOCK; 3.RUNNING_SLOW ");
+        int status = scanner.nextInt();
 
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
-        product.setCreatedAt(GregorianCalendar.getInstance().getTime());
-        product.setProductStatus(ProductStatus.IN_STOCK);
+    //    product.setCreatedAt(GregorianCalendar.getInstance().getTime());
+        Date now = new Date();
+        product.setCreatedAt(now);
+        if(status == 1){ //TODO more data about possible stats
+            product.setProductStatus(ProductStatus.OUT_OF_STOCK);
+        } else if (status == 3) {
+            product.setProductStatus(ProductStatus.RUNNING_SLOW);
+        } else {
+            product.setProductStatus(ProductStatus.IN_STOCK);
+        }
 
         Product savedProduct = productRepository.save(product);
         System.out.println("Product has been created " + savedProduct);
@@ -47,7 +58,7 @@ public class ProductService {
     }
 
     @Transactional
-    public void removeById(Scanner scanner) {
+    public void removeById(Scanner scanner) {//TODO remove ordered if possible
         System.out.println("Input id of product to remove: ");
         Integer id = scanner.nextInt();
         System.out.println("Input password: ");

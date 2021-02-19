@@ -24,7 +24,7 @@ public class UserService {
 
         Optional<User> userFromDb = findUser(user);
         if (!userFromDb.isPresent()) {
-            System.out.println("User with input login not found. Do you want to sign up?");
+            System.out.println("User with input login not found. Do you want to sign up?(yes/no)");
             String answer = scanner.next();
             if (answer.equalsIgnoreCase("yes")) {
                 return createUser(user);

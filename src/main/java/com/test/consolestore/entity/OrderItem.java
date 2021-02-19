@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @NoArgsConstructor
-//TODO toString
+
 public class OrderItem implements Serializable {
 
     public OrderItem(Product product, Long quantity) {
@@ -27,4 +27,19 @@ public class OrderItem implements Serializable {
     @ColumnDefault(value = "1")
     @Getter
     private int quantity;
+
+    public String getProductName(){
+        Product demoProduct = this.orderItemId.getProduct();
+        return demoProduct.getName();
+    }
+
+    public int getItemPrice(){
+        Product demoProduct = this.orderItemId.getProduct();
+        return demoProduct.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem(Product=" + this.getProductName() + ", quantity=" + this.getQuantity() + ")";
+    }
 }

@@ -38,5 +38,5 @@ public class OrderItemService {
 
     public void showAllWhichOrdered() {
         orderItemRepository.findAllWhichOrdered().forEach(System.out::println);
-    } //TODO toString
+    }
 }

@@ -6,6 +6,7 @@ import com.test.consolestore.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -23,7 +24,9 @@ public class OrderService {
         String status = scanner.next();
         Orders orders = new Orders();
         orders.setStatus(status);
-        orders.setCreatedAt(GregorianCalendar.getInstance().getTime());
+    //    orders.setCreatedAt(GregorianCalendar.getInstance().getTime());
+        Date now = new Date();
+        orders.setCreatedAt(now);
         orders.setUser(user);
         return orderRepository.save(orders);
     }

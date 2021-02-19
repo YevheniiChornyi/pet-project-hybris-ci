@@ -1,14 +1,14 @@
 package com.test.consolestore.console.enums;
 
 public enum Command {
-    SHOW_ORDERS,
-    REMOVE_PRODUCT,
-    TOTAL_QUANTITIES,
     CREATE_PRODUCT,
     CREATE_ORDER,
+    SHOW_ORDERS,
     SHOW_ORDER_BY_ID,
-    DISCONNECT,
     SHOW_PRODUCTS,
+    TOTAL_QUANTITIES,
+    REMOVE_PRODUCT,
+    DISCONNECT,
     WRONG_COMMAND, // ignore this
     HELP;
 
